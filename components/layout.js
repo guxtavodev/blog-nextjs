@@ -3,18 +3,21 @@ import Image from 'next/image';
 import styles from './layout.module.css';
 import utilStyles from '../styles/utils.module.css';
 import Link from 'next/link';
+import Script from 'next/script';
+
 
 const name = 'Gustavo Rocha';
-export const siteTitle = 'Next.js Sample Website';
+export const siteTitle = 'Blogus';
 
 export default function Layout({ children, home }) {
   return (
     <div className={styles.container}>
       <Head>
+          
         <link rel="icon" href="/favicon.ico" />
         <meta
           name="description"
-          content="Learn how to build a personal website using Next.js"
+          content="Blog do Gustavo"
         />
         <meta
           property="og:image"
@@ -24,6 +27,18 @@ export default function Layout({ children, home }) {
         />
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
+        <Script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(c,l,a,r,i,t,y){
+                  c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+                  t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+                  y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+              })(window, document, "clarity", "script", "jbe2yxb9b1");
+            `,
+          }}
+        />
+
       </Head>
       <header className={styles.header}>
         {home ? (
